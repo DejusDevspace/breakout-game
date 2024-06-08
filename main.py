@@ -1,6 +1,8 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
 from ui import Interface
+# import time
 
 # Create the screen object
 screen = Screen()
@@ -8,15 +10,18 @@ screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.title('Breakout')
 
-# Accelerate drawing
+# Accelerate drawing process and placement of instances on the screen
 screen.tracer(0)
 
 # Create an instance of the paddle object
 paddle = Paddle()
 
+# Create and instance of the ball object
+ball = Ball()
+
 # Create and initialize the game interface
-interface = Interface()
-interface.initialize()
+interface = Interface(layers={(200, 220): 'purple', (240, 260): 'blue'})
+interface.__setup__()
 
 # Add an event listener to the screen for key presses
 screen.listen()
@@ -28,3 +33,6 @@ screen.onkeypress(paddle.move_right, 'Right')
 # Show the screen after drawings have been made
 screen.update()
 screen.exitonclick()
+
+# for i in range(1000):
+#     print(f"{i:03}")
