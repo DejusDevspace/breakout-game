@@ -1,5 +1,8 @@
 from turtle import Turtle
-import time
+# import time
+
+# Distance for movement of the ball across the screen
+MOVE_DISTANCE = 10
 
 
 class Ball(Turtle):
@@ -9,6 +12,12 @@ class Ball(Turtle):
         self.shape('circle')
         self.color('white')
         self.penup()
-        # self.x_move = 10
-        # self.y_move = 10
-        # self.sleep_time = 0.1
+        self.x_move = MOVE_DISTANCE
+        self.y_move = MOVE_DISTANCE
+        self.sleep_time = 0.1
+
+    def move(self):
+        """Moves the ball along the game interface"""
+        new_x = self.xcor() - self.x_move  # Negative addition to make ball move downwards
+        new_y = self.ycor() - self.y_move
+        self.goto(new_x, new_y)

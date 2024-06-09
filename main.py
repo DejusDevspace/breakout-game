@@ -2,7 +2,7 @@ from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 from ui import Interface
-# import time
+import time
 
 # Create the screen object
 screen = Screen()
@@ -20,7 +20,7 @@ paddle = Paddle()
 ball = Ball()
 
 # Create and initialize the game interface
-interface = Interface(layers={(200, 220): 'purple', (240, 260): 'blue'})
+interface = Interface()
 interface.__setup__()
 
 # Add an event listener to the screen for key presses
@@ -31,8 +31,10 @@ screen.onkeypress(paddle.move_left, 'Left')
 screen.onkeypress(paddle.move_right, 'Right')
 
 # Show the screen after drawings have been made
-screen.update()
-screen.exitonclick()
+start = True
+while start:
+    time.sleep(ball.sleep_time)
+    screen.update()
+    ball.move()
 
-# for i in range(1000):
-#     print(f"{i:03}")
+screen.exitonclick()
