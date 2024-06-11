@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+SCORE_FONT = ('Montserrat', 15, 'normal')
+
 
 class Interface(Turtle):
     def __init__(self, **kwargs):
@@ -22,21 +24,22 @@ class Interface(Turtle):
             raise TypeError("parameter: 'layers' must be a dictionary")
 
         self.score = 0
+        self.score_text = None
 
-    def __setup__(self):
+    def setup_(self):
         """
         Creates the specified layers of bricks and their colors on the game interface.\n
         \nformat: (y-axis position): 'color'\n
         Default layers:
          \ndict: {
-            \n\t(240, 260): 'red',
-            \n\t(220, 200): 'orange',
-            \n\t(180, 160): 'green',
-            \n\t(140, 120): 'yellow'
+            \n\t(220, 240): 'red',
+            \n\t(180, 200): 'orange',
+            \n\t(140, 160): 'green',
+            \n\t(100, 120): 'yellow'
         \n}
         \nInitializes the scoreboard.
         """
-        # Create layers of brick
+        # ----- Creating layers of brick ----- #
         for heights, color in self.layers.items():
             # Loop through each height position
             for i in heights:
@@ -49,15 +52,38 @@ class Interface(Turtle):
                     brick.goto(j, i)
                     self.bricks.append(brick)
 
-        # TODO: Create scoreboards
-        # Create a straight line at the top of the screen
+        # ----- Creating a straight line at the top of the screen ----- #
+        self.draw_line(290)
+
+        # ----- Creating the score object ----- #
+        self.score_text = Turtle()
+        self.score_text.color('white')
+        self.score_text.penup()
+        self.score_text.goto(-50, 265)
+        self.write_score(self.score_text)
+        self.score_text.hideturtle()
+
+        # ----- Creating a straight line at the bottom of the score object ----- #
+        self.draw_line(260)
+
+    @staticmethod
+    def draw_line(y_position: int) -> None:
         for i in range(-400, 400, 20):
             line = Turtle()
             line.shape('square')
             line.color('white')
             line.penup()
-            line.shapesize(stretch_wid=0.4, stretch_len=2)
-            line.goto(i, 280)
+            line.shapesize(stretch_wid=0.1, stretch_len=2)
+            line.goto(i, y_position)
             line.pendown()
             line.forward(10)
             line.penup()
+
+    def write_score(self, score_object: Turtle):
+        score_object.write('Score: {:03}'.format(self.score), align='center', font=SCORE_FONT)
+
+    def update_score(self, points: int) -> None:
+        """Updates the score of the user by specified number of points"""
+        self.score_text.clear()
+        self.score += points
+        self.write_score(self.score_text)

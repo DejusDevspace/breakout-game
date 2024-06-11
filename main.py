@@ -21,7 +21,7 @@ ball = Ball()
 
 # Create and initialize the game interface
 interface = Interface()
-interface.__setup__()
+interface.setup_()
 
 # Add an event listener to the screen for key presses
 screen.listen()
