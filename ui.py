@@ -43,7 +43,7 @@ class Interface(Turtle):
         for heights, color in self.layers.items():
             # Loop through each height position
             for i in heights:
-                for j in range(-360, 360, 50):
+                for j in range(-355, 370, 50):
                     brick = Turtle()
                     brick.shape('square')
                     brick.color(color)
@@ -52,34 +52,57 @@ class Interface(Turtle):
                     brick.goto(j, i)
                     self.bricks.append(brick)
 
-        # ----- Creating a straight line at the top of the screen ----- #
-        self.draw_line(290)
+        # ----- Creating a straight line at the top of the game interface ----- #
+        self.draw_hor_line(290)
 
         # ----- Creating the score object ----- #
         self.score_text = Turtle()
         self.score_text.color('white')
         self.score_text.penup()
-        self.score_text.goto(-50, 265)
+        self.score_text.goto(-10, 265)
         self.write_score(self.score_text)
         self.score_text.hideturtle()
 
         # ----- Creating a straight line at the bottom of the score object ----- #
-        self.draw_line(260)
+        self.draw_hor_line(260)
+
+        # Creating lines at both edges of the interface to indicate boundaries
+        self.draw_ver_line(370)
+        self.draw_ver_line(-400)
+
+        # Creating a horizontal line at the bottom of the game interface
+        self.draw_hor_line(-285)
 
     @staticmethod
-    def draw_line(y_position: int) -> None:
+    def draw_hor_line(y: int) -> None:
+        """Draws a horizontal line across the interface at a specified height (y)"""
         for i in range(-400, 400, 20):
             line = Turtle()
             line.shape('square')
             line.color('white')
             line.penup()
             line.shapesize(stretch_wid=0.1, stretch_len=2)
-            line.goto(i, y_position)
+            line.goto(i, y)
             line.pendown()
             line.forward(10)
             line.penup()
 
-    def write_score(self, score_object: Turtle):
+    @staticmethod
+    def draw_ver_line(x: int) -> None:
+        """Draws a vertical line across the interface at a specified width (x)"""
+        for i in range(-290, 290, 40):
+            line = Turtle()
+            line.shape('square')
+            line.color('white')
+            line.setheading(0)
+            line.penup()
+            line.shapesize(stretch_wid=2, stretch_len=0.1)
+            line.goto(x, i)
+            line.forward(10)
+            line.penup()
+
+    def write_score(self, score_object: Turtle) -> None:
+        """Writes the current score of the player on the game interface"""
         score_object.write('Score: {:03}'.format(self.score), align='center', font=SCORE_FONT)
 
     def update_score(self, points: int) -> None:
