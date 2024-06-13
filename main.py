@@ -23,14 +23,13 @@ ball = Ball()
 interface = Interface()
 interface.setup_()
 
-# Add an event listener to the screen for key presses
+# Adding event listeners to the screen for key presses
 screen.listen()
-# Move the left while left key is pressed
+# Move to the left while left key is pressed
 screen.onkeypress(paddle.move_left, 'Left')
-# Move the right while right key is pressed
+# Move to the right while right key is pressed
 screen.onkeypress(paddle.move_right, 'Right')
 
-# Show the screen after drawings have been made
 start = True
 while start:
     time.sleep(ball.sleep_time)

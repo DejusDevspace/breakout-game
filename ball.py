@@ -14,10 +14,15 @@ class Ball(Turtle):
         self.penup()
         self.x_move = MOVE_DISTANCE
         self.y_move = MOVE_DISTANCE
-        self.sleep_time = 0.1
+        self.sleep_time = 0.1  # Controls the speed of the ball
 
     def move(self):
         """Moves the ball along the game interface"""
         new_x = self.xcor() - self.x_move  # Negative addition to make ball move downwards
         new_y = self.ycor() - self.y_move
         self.goto(new_x, new_y)
+
+    # TODO: Create collision functions that return bool values
+    def boundary_collision(self):
+        """Checks if the ball is colliding with any of the edges on the interface"""
+        pass
