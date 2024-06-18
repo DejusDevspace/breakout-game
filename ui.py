@@ -10,7 +10,15 @@ class Interface(Turtle):
         self.color('white')
         self.penup()
         self.hideturtle()
+        # List of brick objects
         self.bricks = []
+        # Borders for collision coordinates
+        self.borders = {
+            'left': -380,
+            'right': 350,
+            'bottom': -265,
+            'top': 270,
+        }
         # Dictionary of brick layers and corresponding layer colors
         self.layers = kwargs.get('layers', {
             # y position: color

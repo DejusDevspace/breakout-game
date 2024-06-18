@@ -4,6 +4,8 @@ from ball import Ball
 from ui import Interface
 import time
 
+# TODO: Declare points variables for different brick layers
+
 # Create the screen object
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -35,5 +37,8 @@ while start:
     time.sleep(ball.sleep_time)
     screen.update()
     ball.move()
+    # Test
+    if ball.ycor() < interface.borders['bottom']:
+        print('collision')
 
 screen.exitonclick()

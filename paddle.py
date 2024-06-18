@@ -14,13 +14,13 @@ class Paddle(Turtle):
         self.goto(0, -250)
         self.shapesize(stretch_wid=0.5, stretch_len=5)  # Size of the paddle object
 
-    def move_left(self):
+    def move_left(self) -> None:
         """Moves the paddle to the left along the x-axis."""
         x_position = self.xcor()  # Get the current x coordinate
         # Subtract the move distance from the current x coordinate and go there
         self.goto(x=x_position - MOVE_DISTANCE, y=self.ycor())
 
-    def move_right(self):
+    def move_right(self) -> None:
         """Moves the paddle to the right along the x-axis."""
         x_position = self.xcor()  # Get the current x coordinate
         # Add the move distance to the current x coordinate and go there

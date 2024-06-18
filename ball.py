@@ -16,13 +16,22 @@ class Ball(Turtle):
         self.y_move = MOVE_DISTANCE
         self.sleep_time = 0.1  # Controls the speed of the ball
 
-    def move(self):
+    def move(self) -> None:
         """Moves the ball along the game interface"""
+        # TODO: Attempt making ball move in different directions upon starting (x-axis randomization??)
         new_x = self.xcor() - self.x_move  # Negative addition to make ball move downwards
         new_y = self.ycor() - self.y_move
         self.goto(new_x, new_y)
 
-    # TODO: Create collision functions that return bool values
-    def boundary_collision(self):
-        """Checks if the ball is colliding with any of the edges on the interface"""
+    # TODO: Create bouncing effects for collisions
+    def ver_bounce(self) -> None:
+        """
+        Vertical bounce: Moves the ball in the opposite direction along the y-axis
+        """
+        pass
+
+    def hor_bounce(self) -> None:
+        """
+        Horizontal bounce: Moves the ball in the opposite direction along the x-axis
+        """
         pass
