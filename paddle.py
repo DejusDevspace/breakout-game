@@ -13,7 +13,8 @@ class Paddle(Turtle):
         self.penup()  # Avoids drawing line on movement
         self.goto(0, -250)
         self.shapesize(stretch_wid=0.5, stretch_len=5)  # Size of the paddle object
-        self.collision_distance = 25
+        self.position = -230
+        self.collision_distance = 45
 
     def move_left(self) -> None:
         """Moves the paddle to the left along the x-axis."""

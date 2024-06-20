@@ -83,7 +83,12 @@ class Interface(Turtle):
 
     @staticmethod
     def draw_hor_line(y: int) -> None:
-        """Draws a horizontal line across the interface at a specified height (y)"""
+        """
+        Draws a line at the specified horizontal position on the interface.
+
+        :param y: The y-coordinate at which to draw the line.
+        :type y: int
+        """
         for i in range(-400, 400, 20):
             line = Turtle()
             line.shape('square')
@@ -97,7 +102,12 @@ class Interface(Turtle):
 
     @staticmethod
     def draw_ver_line(x: int) -> None:
-        """Draws a vertical line across the interface at a specified width (x)"""
+        """
+        Draws a line at the specified vertical position on the interface.
+
+        :param x: The x-coordinate at which to draw the line.
+        :type x: int
+        """
         for i in range(-290, 290, 40):
             line = Turtle()
             line.shape('square')
@@ -110,11 +120,21 @@ class Interface(Turtle):
             line.penup()
 
     def write_score(self, score_object: Turtle) -> None:
-        """Writes the current score of the player on the game interface"""
+        """
+        Writes the current score of the player on the game interface
+
+        :param score_object: The object to write the score with.
+        :type score_object: Turtle instance
+        """
         score_object.write('Score: {:03}'.format(self.score), align='center', font=SCORE_FONT)
 
     def update_score(self, points: int) -> None:
-        """Updates the score of the user by specified number of points"""
+        """
+        Updates the score of the user by specified number of points and writes it on the interface
+
+        :param points: The number of points to be added to current score
+        :type points: int
+        """
         self.score_text.clear()
         self.score += points
         self.write_score(self.score_text)
