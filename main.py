@@ -8,11 +8,11 @@ import time
 RED, ORANGE, GREEN, YELLOW = 7, 5, 3, 1
 
 
-def out_of_bounds(obj: Turtle) -> bool:
-    if obj.ycor() < interface.borders['bottom'] or obj.ycor() > interface.borders['top'] or obj.xcor() \
-            < interface.borders['left'] or obj.xcor() > interface.borders['right']:
-        return True
-    return False
+# def out_of_bounds_ver(obj: Turtle) -> bool:
+#     if obj.ycor() < interface.borders['bottom'] or obj.ycor() > interface.borders['top'] or obj.xcor() \
+#             < interface.borders['left'] or obj.xcor() > interface.borders['right']:
+#         return True
+#     return False
 
 
 # Create the screen object
@@ -46,8 +46,13 @@ while start:
     time.sleep(ball.sleep_time)
     screen.update()
     ball.move()
-    # Checking if ball is out of bounds
-    if out_of_bounds(ball):
-        print('Out of bounds!')
+
+    # Checking if the ball makes contact with the paddle
+    if ball.distance(paddle) < paddle.collision_distance:
+        ball.ver_bounce()
+
+    # Checking if ball is out of bounds horizontally
+    if ball.xcor() < interface.borders['left'] or ball.xcor() > interface.borders['right']:
+        ball.hor_bounce()
 
 screen.exitonclick()

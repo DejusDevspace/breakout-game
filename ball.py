@@ -1,5 +1,6 @@
 from turtle import Turtle
 # import time
+from random import randint
 
 # Distance for movement of the ball across the screen
 MOVE_DISTANCE = 10
@@ -18,20 +19,18 @@ class Ball(Turtle):
 
     def move(self) -> None:
         """Moves the ball along the game interface"""
-        # TODO: Attempt making ball move in different directions upon starting (x-axis randomization??)
-        new_x = self.xcor() - self.x_move  # Negative addition to make ball move downwards
-        new_y = self.ycor() - self.y_move
+        new_x = self.xcor() - self.x_move
+        new_y = self.ycor() - self.y_move  # Negative addition to make ball move downwards
         self.goto(new_x, new_y)
 
-    # TODO: Create bouncing effects for collisions
     def ver_bounce(self) -> None:
         """
         Vertical bounce: Moves the ball in the opposite direction along the y-axis
         """
-        pass
+        self.y_move *= -1
 
     def hor_bounce(self) -> None:
         """
         Horizontal bounce: Moves the ball in the opposite direction along the x-axis
         """
-        pass
+        self.x_move *= -1

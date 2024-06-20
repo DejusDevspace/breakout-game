@@ -14,8 +14,8 @@ class Interface(Turtle):
         self.bricks = []
         # Borders for collision coordinates
         self.borders = {
-            'left': -380,
-            'right': 350,
+            'left': -370,
+            'right': 360,
             'bottom': -265,
             'top': 270,
         }
