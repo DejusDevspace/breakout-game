@@ -1,10 +1,19 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
 from ui import Interface
 import time
 
-# TODO: Declare points variables for different brick layers
+# Default:
+RED, ORANGE, GREEN, YELLOW = 7, 5, 3, 1
+
+
+def out_of_bounds(obj: Turtle) -> bool:
+    if obj.ycor() < interface.borders['bottom'] or obj.ycor() > interface.borders['top'] or obj.xcor() \
+            < interface.borders['left'] or obj.xcor() > interface.borders['right']:
+        return True
+    return False
+
 
 # Create the screen object
 screen = Screen()
@@ -37,8 +46,8 @@ while start:
     time.sleep(ball.sleep_time)
     screen.update()
     ball.move()
-    # Test
-    if ball.ycor() < interface.borders['bottom']:
-        print('collision')
+    # Checking if ball is out of bounds
+    if out_of_bounds(ball):
+        print('Out of bounds!')
 
 screen.exitonclick()
