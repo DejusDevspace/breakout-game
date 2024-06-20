@@ -36,17 +36,21 @@ class Interface(Turtle):
 
     def setup_(self):
         """
-        Creates the specified layers of bricks and their colors on the game interface.\n
-        \nformat: (y-axis position): 'color'\n
+        Creates the specified layers of bricks and their colors on the game interface.
+
+        Format: (y-axis position): 'color'
+
         Default layers:
-         \ndict: {
-            \n\t(220, 240): 'red',
-            \n\t(180, 200): 'orange',
-            \n\t(140, 160): 'green',
-            \n\t(100, 120): 'yellow'
-        \n}
-        \nInitializes the scoreboard.
+            {
+                (220, 240): 'red',
+                (180, 200): 'orange',
+                (140, 160): 'green',
+                (100, 120): 'yellow'
+            }
+
+        Initializes the scoreboard.
         """
+
         # ----- Creating layers of brick ----- #
         for heights, color in self.layers.items():
             # Loop through each height position
