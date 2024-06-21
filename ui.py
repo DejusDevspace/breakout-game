@@ -33,7 +33,7 @@ class Interface(Turtle):
 
         self.score = 0
         self.score_text = None
-        self.lives = 3
+        self.lives = 3  # Default number of lives
 
     def setup_(self):
         """
