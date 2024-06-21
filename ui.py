@@ -33,6 +33,7 @@ class Interface(Turtle):
 
         self.score = 0
         self.score_text = None
+        self.lives = 3
 
     def setup_(self):
         """
@@ -142,3 +143,9 @@ class Interface(Turtle):
         self.score_text.clear()
         self.score += points
         self.write_score(self.score_text)
+
+    def refresh(self):
+        # TODO: Add refresh functionality
+        pass
+
+    # TODO: Create lives count (hearts)

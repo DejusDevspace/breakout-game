@@ -14,7 +14,7 @@ class Paddle(Turtle):
         self.goto(0, -250)
         self.shapesize(stretch_wid=0.5, stretch_len=5)  # Size of the paddle object
         self.position = -230
-        self.collision_distance = 45
+        self.collision_distance = 50
 
     def move_left(self) -> None:
         """Moves the paddle to the left along the x-axis."""

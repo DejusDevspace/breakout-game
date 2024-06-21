@@ -34,3 +34,11 @@ class Ball(Turtle):
         Horizontal bounce: Moves the ball in the opposite direction along the x-axis
         """
         self.x_move *= -1
+
+    def speed_up(self):
+        # TODO: Increase ball speed
+        self.sleep_time *= 0.7
+
+    def refresh(self):
+        # TODO: Create ball reset functionality
+        pass

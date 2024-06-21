@@ -5,7 +5,12 @@ from ui import Interface
 import time
 
 # Default: Brick scores...
-RED, ORANGE, GREEN, YELLOW = 7, 5, 3, 1
+scores = {
+    'yellow': 1,
+    'green': 3,
+    'orange': 5,
+    'red': 7
+}
 
 
 def missed_paddle(obj: Turtle) -> bool:
@@ -14,7 +19,7 @@ def missed_paddle(obj: Turtle) -> bool:
 
     :param obj: The object to check position of
     :type obj: An instance of the Turtle class
-    :return: True if ball falls below paddle position, False otherwise
+    :return: True if object falls below paddle position, False otherwise
     :rtype: bool
     """
     if obj.ycor() < interface.borders['bottom']:
@@ -68,7 +73,19 @@ while start:
 
     # Checking if the paddle misses the ball
     if missed_paddle(ball):
-        # TODO: Player loses a point
+        # TODO: Player loses a life
         pass
+
+    # Checking if the ball hits a brick
+    for brick in interface.bricks:
+        if ball.distance(brick) < 30:
+            # Bounce the ball in the opposite direction
+            ball.ver_bounce()
+            # Remove the brick from the interface
+            brick.hideturtle()
+            # Remove the bricks from the list of bricks
+            interface.bricks.remove(brick)
+            # Increase the score according to the color of the brick that was hit
+            interface.update_score(scores[brick.color()[0]])
 
 screen.exitonclick()
