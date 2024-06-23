@@ -40,5 +40,6 @@ class Ball(Turtle):
         self.sleep_time *= 0.7
 
     def refresh(self):
-        # TODO: Create ball reset functionality
-        pass
+        """Returns the ball to the starting position and resets the ball speed"""
+        self.home()
+        self.sleep_time = 0.1
