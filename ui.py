@@ -1,6 +1,7 @@
 from turtle import Turtle
 
 SCORE_FONT = ('Montserrat', 15, 'normal')
+# GAME_OVER_FONT = ('Montserrat', 30, 'bold')
 
 
 class Interface(Turtle):
