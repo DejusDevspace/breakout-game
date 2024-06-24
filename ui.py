@@ -2,6 +2,7 @@ from turtle import Turtle
 
 SCORE_FONT = ('Montserrat', 15, 'normal')
 # GAME_OVER_FONT = ('Montserrat', 30, 'bold')
+LIVES_FONT = ('Montserrat', 12, 'normal')
 
 
 class Interface(Turtle):
@@ -34,7 +35,9 @@ class Interface(Turtle):
 
         self.score = 0
         self.score_text = None
-        self.lives = 3  # Default number of lives
+        self.lives = 5  # Default number of lives
+        self.live_text = None
+        self.hearts = ''
 
     def setup_(self):
         """
@@ -76,6 +79,13 @@ class Interface(Turtle):
         self.score_text.goto(-10, 265)
         self.write_score(self.score_text)
         self.score_text.hideturtle()
+
+        self.live_text = Turtle()
+        self.live_text.color('cyan')
+        self.live_text.penup()
+        self.live_text.goto(200, 265)
+        self.write_lives(self.live_text, self.lives)
+        self.live_text.hideturtle()
 
         # ----- Creating a straight line at the bottom of the score object ----- #
         self.draw_hor_line(260)
@@ -134,6 +144,19 @@ class Interface(Turtle):
         """
         score_object.write('Score: {:03}'.format(self.score), align='center', font=SCORE_FONT)
 
+    def write_lives(self, lives_object: Turtle, lives: int) -> None:
+        """
+        Writes the number of lives the player has left
+
+        :param lives_object: The object to write the lives with
+        :param lives: The number of lives the player has
+        :type lives_object: Turtle instance
+        :type lives: int
+        """
+        for i in range(lives):
+            self.hearts += '❤️'
+        lives_object.write(f'{self.hearts}', align='left', font=LIVES_FONT)
+
     def update_score(self, points: int) -> None:
         """
         Updates the score of the user by specified number of points and writes it on the interface
@@ -144,6 +167,9 @@ class Interface(Turtle):
         self.score_text.clear()
         self.score += points
         self.write_score(self.score_text)
+
+    def update_lives(self):
+        pass
 
     def refresh(self):
         # TODO: Add refresh functionality
