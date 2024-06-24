@@ -85,6 +85,9 @@ while start:
         # TODO: Player loses a life
         pass
 
+    # TODO: Ball pace increments: 4 hits, 12 hits, collision with orange and red bricks
+    # TODO: Paddle shrinks to one-half its size after ball breaks through to the upper wall
+
     # Checking if the ball hits a brick
     for brick in interface.bricks:
         if ball.distance(brick) < 30:
