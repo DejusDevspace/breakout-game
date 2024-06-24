@@ -27,3 +27,7 @@ class Paddle(Turtle):
         x_position = self.xcor()  # Get the current x coordinate
         # Add the move distance to the current x coordinate and go there
         self.goto(x=x_position + MOVE_DISTANCE, y=self.ycor())
+
+    def shrink(self):
+        # TODO: Shrink paddle size
+        pass
