@@ -46,7 +46,6 @@ class Interface(Turtle):
             raise TypeError("parameter: 'lives' must be an integer")
 
         self.live_text = None
-        self.hearts = ''
 
     def setup_(self):
         """
@@ -89,6 +88,7 @@ class Interface(Turtle):
         self.write_score(self.score_text)
         self.score_text.hideturtle()
 
+        # ----- Creating the lives object ----- #
         self.live_text = Turtle()
         self.live_text.color('cyan')
         self.live_text.penup()
@@ -153,7 +153,8 @@ class Interface(Turtle):
         """
         score_object.write('Score: {:03}'.format(self.score), align='center', font=SCORE_FONT)
 
-    def write_lives(self, lives_object: Turtle, lives: int) -> None:
+    @staticmethod
+    def write_lives(lives_object: Turtle, lives: int) -> None:
         """
         Writes the number of lives the player has left
 
@@ -162,9 +163,10 @@ class Interface(Turtle):
         :type lives_object: Turtle instance
         :type lives: int
         """
+        hearts = ''
         for i in range(lives):
-            self.hearts += '❤️'
-        lives_object.write(f'{self.hearts}', align='left', font=LIVES_FONT)
+            hearts += '❤️'
+        lives_object.write(f'{hearts}', align='left', font=LIVES_FONT)
 
     def update_score(self, points: int) -> None:
         """
@@ -177,11 +179,12 @@ class Interface(Turtle):
         self.score += points
         self.write_score(self.score_text)
 
-    def update_lives(self):
-        pass
+    def update_lives(self) -> None:
+        """Writes the value of lives left for the user"""
+        self.live_text.clear()
+        self.lives -= 1
+        self.write_lives(self.live_text, self.lives)
 
-    def refresh(self):
-        # TODO: Add refresh functionality
+    def refresh(self) -> None:
+        # TODO: Add refresh functionality: second screen
         pass
-
-    # TODO: Create lives count (hearts)

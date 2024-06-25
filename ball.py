@@ -35,11 +35,11 @@ class Ball(Turtle):
         """
         self.x_move *= -1
 
-    def speed_up(self):
-        # TODO: Increase ball speed
+    def speed_up(self) -> None:
+        """Increases the speed of the ball"""
         self.sleep_time *= 0.7
 
-    def refresh(self):
+    def refresh(self) -> None:
         """Returns the ball to the starting position and resets the ball speed"""
         self.home()
         self.sleep_time = 0.1

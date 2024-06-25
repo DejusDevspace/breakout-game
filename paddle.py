@@ -29,5 +29,5 @@ class Paddle(Turtle):
         self.goto(x=x_position + MOVE_DISTANCE, y=self.ycor())
 
     def shrink(self):
-        # TODO: Shrink paddle size
-        pass
+        """Reduces the size of the paddle by one-half of the original"""
+        self.shapesize(stretch_wid=0.5, stretch_len=3.3)
