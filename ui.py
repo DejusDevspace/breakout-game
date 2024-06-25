@@ -35,7 +35,16 @@ class Interface(Turtle):
 
         self.score = 0
         self.score_text = None
-        self.lives = 5  # Default number of lives
+
+        self.lives = kwargs.get('lives', 5)  # Default number of lives: 5
+
+        # Lives should not be more than 5
+        if self.lives > 5:
+            raise ValueError("'lives' must not be greater than 5")
+        # Check if user inputs a integer: if specifying number of lives manually
+        if not isinstance(self.lives, int):
+            raise TypeError("parameter: 'lives' must be an integer")
+
         self.live_text = None
         self.hearts = ''
 
