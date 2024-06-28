@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 SCORE_FONT = ('Montserrat', 15, 'normal')
-# GAME_OVER_FONT = ('Montserrat', 30, 'bold')
+GAME_OVER_FONT = ('Montserrat', 30, 'bold')
 LIVES_FONT = ('Montserrat', 12, 'normal')
 
 
@@ -34,6 +34,7 @@ class Interface(Turtle):
             raise TypeError("parameter: 'layers' must be a dictionary")
 
         self.score = 0
+        self.rounds = 1
         self.score_text = None
 
         self.lives = kwargs.get('lives', 5)  # Default number of lives: 5
@@ -41,7 +42,7 @@ class Interface(Turtle):
         # Lives should not be more than 5
         if self.lives > 5:
             raise ValueError("'lives' must not be greater than 5")
-        # Check if user inputs a integer: if specifying number of lives manually
+        # Check if user inputs an integer: if specifying number of lives manually
         if not isinstance(self.lives, int):
             raise TypeError("parameter: 'lives' must be an integer")
 
@@ -140,6 +141,8 @@ class Interface(Turtle):
             line.setheading(0)
             line.penup()
             line.shapesize(stretch_wid=2, stretch_len=0.1)
+            if i == -250:
+                line.color('blue')
             line.goto(x, i)
             line.forward(10)
             line.penup()
@@ -185,6 +188,29 @@ class Interface(Turtle):
         self.lives -= 1
         self.write_lives(self.live_text, self.lives)
 
-    def refresh(self) -> None:
-        # TODO: Add refresh functionality: second screen
-        pass
+    def next_round(self) -> None:
+        """Refreshes the screen with new set of bricks"""
+        self.score_text.clear()
+        self.live_text.clear()
+        self.rounds += 1
+        self.setup_()
+
+    @staticmethod
+    def winner():
+        """Display win text on the game interface"""
+        win_text = Turtle()
+        win_text.color('white')
+        win_text.penup()
+        win_text.goto(0, 0)
+        win_text.write('YOU WIN!', align='center', font=GAME_OVER_FONT)
+        win_text.hideturtle()
+
+    @staticmethod
+    def game_over():
+        """Display the game over text on the game interface"""
+        game_over_text = Turtle()
+        game_over_text.color('white')
+        game_over_text.penup()
+        game_over_text.goto(0, 0)
+        game_over_text.write('GAME OVER', align='center', font=GAME_OVER_FONT)
+        game_over_text.hideturtle()

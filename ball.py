@@ -1,6 +1,4 @@
 from turtle import Turtle
-# import time
-from random import randint
 
 # Distance for movement of the ball across the screen
 MOVE_DISTANCE = 10
@@ -15,7 +13,10 @@ class Ball(Turtle):
         self.penup()
         self.x_move = MOVE_DISTANCE
         self.y_move = MOVE_DISTANCE
-        self.sleep_time = 0.1  # Controls the speed of the ball
+        self.speed = 0.1  # Controls the speed of the ball
+        self.sped_up = False
+        self.hit_count = 0
+        self.upper_col = 0
 
     def move(self) -> None:
         """Moves the ball along the game interface"""
@@ -37,9 +38,10 @@ class Ball(Turtle):
 
     def speed_up(self) -> None:
         """Increases the speed of the ball"""
-        self.sleep_time *= 0.7
+        self.speed *= 0.7
 
     def refresh(self) -> None:
         """Returns the ball to the starting position and resets the ball speed"""
         self.home()
-        self.sleep_time = 0.1
+        self.hit_count = 0
+        self.speed = 0.1
