@@ -13,6 +13,7 @@ class Paddle(Turtle):
         self.position = -230
         # The position increment for movement
         self.MOVE_DISTANCE = 20
+
         self.collision_distance = 50
 
     def move_left(self) -> None:
@@ -32,3 +33,7 @@ class Paddle(Turtle):
     def shrink(self):
         """Reduces the size of the paddle by one-half of the original"""
         self.shapesize(stretch_wid=0.5, stretch_len=3.3)
+
+    def refresh(self):
+        """Resets the speed of the paddle"""
+        self.MOVE_DISTANCE = 20

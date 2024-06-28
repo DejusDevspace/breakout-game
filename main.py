@@ -91,6 +91,7 @@ def main():
             interface.update_lives()
             print('hit:', ball.hit_count)
             ball.refresh()
+            paddle.refresh()
 
         # Checking if the ball hits a brick
         for brick in interface.bricks:
@@ -119,7 +120,7 @@ def main():
                 interface.update_score(scores[brick.color()[0]])
 
         # Increasing ball speed after every 4th and 12th hit
-        if ball.hit_count % 4 == 0 and ball.hit_count != 0 and not ball.sped_up:
+        if ball.hit_count % 4 == 0 and ball.hit_count % 12 != 0 and ball.hit_count != 0 and not ball.sped_up:
             ball.speed_up()
             ball.sped_up = True
             print(ball.hit_count)
