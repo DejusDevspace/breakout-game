@@ -89,7 +89,6 @@ def main():
         # Checking if the paddle misses the ball
         if missed_paddle(ball):
             interface.update_lives()
-            print('hit:', ball.hit_count)
             ball.refresh()
             paddle.refresh()
 
@@ -110,7 +109,6 @@ def main():
                     if ball.upper_col % 3 == 0:
                         ball.speed_up()
                         paddle.MOVE_DISTANCE += 5
-                        print(f'Three upper bricks: {ball.speed}\nPad: {paddle.MOVE_DISTANCE}')
 
                 # Remove the brick from the interface
                 brick.hideturtle()
@@ -123,13 +121,9 @@ def main():
         if ball.hit_count % 4 == 0 and ball.hit_count % 12 != 0 and ball.hit_count != 0 and not ball.sped_up:
             ball.speed_up()
             ball.sped_up = True
-            print(ball.hit_count)
-            print(f'4 hits: {ball.speed}')
         if ball.hit_count % 12 == 0 and ball.hit_count != 0 and not ball.sped_up:
             ball.speed_up()
             ball.sped_up = True
-            print(ball.hit_count)
-            print(f'12 hits: {ball.speed}')
 
         # Initialize the next round if the player clears first set of bricks
         if len(interface.bricks) == 0:
