@@ -40,3 +40,7 @@ If you are interested in checking the game, you can install this way:
 # Acknowledgements
 * Inspired by the original Breakout game developed by Atari in 1976.
 * Developed using the Python [Turtle Graphics](https://docs.python.org/3/library/turtle.html) library.
+
+# Screenshots
+<img src="./images/breakout(1).png" width=500px> <img src="./images/breakout(5).png" width=500px>
+<img src="./images/breakout(8).png" width=500px> <img src="./images/breakout(7).png" width=500px>
