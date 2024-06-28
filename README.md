@@ -1,5 +1,5 @@
 # 1976 Breakout Game
-This repository features a modern implementation of the classic 1976 Breakout game, developed using Python and the Turtle graphics library.
+This repository features an implementation of the classic 1976 Breakout game, developed using Python and the Turtle graphics library.
 
 The implementation is centered on demonstrating my competency with Object-Oriented Programming.
 
